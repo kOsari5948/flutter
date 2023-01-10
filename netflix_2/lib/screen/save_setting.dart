@@ -59,7 +59,6 @@ class _save_setting extends State<save_setting> {
         body: ListView(
           children: <Widget>[
             //icon 버튼은 사진만 들어감 text에다가 icon달아야함
-
             Column(children: <Widget>[
               Container(
                   padding: EdgeInsets.only(top: 50),
@@ -78,22 +77,114 @@ class _save_setting extends State<save_setting> {
               ),
               Container(
                 child: Image.asset("src/image/save.jpg"),
-                height: 300,
-                padding: EdgeInsets.only(bottom: 50),
+                height: 250,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(bottom: 15, right: 11),
+                    child: IconButton(
+                      icon: new Icon(
+                        Icons.remove_circle,
+                        color: Color.fromARGB(255, 155, 155, 155),
+                        size: 45,
+                      ),
+                      tooltip: 'profile',
+                      onPressed: () => {Navigator.pop(context)},
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      "1.0",
+                      style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 15, right: 11),
+                    child: IconButton(
+                      icon: new Icon(
+                        Icons.add_circle,
+                        color: Color.fromARGB(255, 155, 155, 155),
+                        size: 45,
+                      ),
+                      tooltip: 'profile',
+                      onPressed: () => {Navigator.pop(context)},
+                    ),
+                  )
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Text(
+                  "GB를 사용합니다.",
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 0.5,
+                width: 500,
+                color: Colors.grey,
               ),
               //아웃라인 버튼 테두리 있는 버튼
               //ElevatedButton 색있음
               Container(
-                width: 280,
+                width: 360,
+                padding: EdgeInsets.only(top: 15, bottom: 15),
+                child: Text(
+                  "1GB는 일반 화질 기준으로 콘텐츠 약 4시간 분량에 해당합니다. 이 기능은 Wi-Fi에서만 작동합니다.",
+                  style: TextStyle(fontSize: 13),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                width: 360,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Text("설정하기"),
+                  child: Text("켜기"),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 81, 104, 220),
                       foregroundColor: Colors.white,
                       textStyle: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ),
+
+              //프로그래습바 너어라
+
+              Container(
+                width: 360,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Container(
+                          width: 10,
+                          height: 10,
+                          color: Colors.blue,
+
+                        ),
+                        Text('   나만의 자동 저장')
+                        ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                      //코드부분           
+                      Container(
+                          width: 10,
+                          height: 10,
+                          color: Colors.white,
+                        ),          
+                      Text('   여유 공간')
+                    ])
+                  ],
+                ),
+              )
             ]),
           ],
         ),
