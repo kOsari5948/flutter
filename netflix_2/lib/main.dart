@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_2/screen/home.dart';
 import 'package:netflix_2/screen/save.dart';
@@ -5,7 +6,19 @@ import 'package:netflix_2/widget/bottom_bar.dart';
 
 double linesize = 1;
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized(); //풀루터 초기화 (firebase)
+
+  await Firebase.initializeApp(
+      //befult setting 세팅 수동으로 한거
+      name: 'netfi', //프로젝트 이름
+      options: const FirebaseOptions(
+          //전부 firebase에서 나온거
+          apiKey: 'AIzaSyBcLH2_CrauAjj9MQjmQGnrxkJTozDCgIk',
+          appId: '1:462285490231:android:ccbd751481f5428acc57b2',
+          messagingSenderId: '462285490231',
+          projectId: 'netfi-408c1'));
   runApp(MyApp());
 }
 

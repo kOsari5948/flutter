@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_2/model/movie.dart';
 
 // 이미지니깐 stateless widget 입니다.
 class BoxSlider extends StatelessWidget {
-  //final List<Movie> movies; //무비리스트 만들기
-  //BoxSlider({required this.movies}); //매개변수
+  final List<Movie> movies; //무비리스트 만들기
+
+  BoxSlider({required this.movies}); //매개변수
   @override
   Widget build(BuildContext context) {
     //위젯 만들기
@@ -17,7 +19,7 @@ class BoxSlider extends StatelessWidget {
           Text('넷플릭스 인기 콘텐츠'),
           Container(
             //레이아웃 같은거
-            height: 120, //높이
+            height: 180, //높이
             child: ListView(
               // 그것의 자식은
               scrollDirection: Axis.horizontal, //스크롤을 수평으로
@@ -41,11 +43,12 @@ List<Widget> makeBoxImages(BuildContext context, List<Movie> movies) {
             //화면 전환 위젯 Navigator push 이동 pop 돌아오기of 없어도 됨
             fullscreenDialog: true, //전체 화면
             builder: (BuildContext context) {
+              return Container();
               //내부 화면 만들기
-              return DetailScreen(
+              /*return DetailScreen(
                 //무비에 대한 movies 값만 받아서 이동
                 movie: movies[i],
-              );
+              );*/
             }));
       }, //이벤트
       child: Container(
@@ -54,7 +57,7 @@ List<Widget> makeBoxImages(BuildContext context, List<Movie> movies) {
         child: Align(
           //위젯 원하는 위치에 박을 수 있데 직접
           alignment: Alignment.centerLeft, //이걸로 직접 박기 중앙에 왼쪽에 박기
-          child: Image.asset('images/' + movies[i].poster), //리소스 파일 사용
+          child:  Image.network(movies[i].img!), //리소스 파일 사용
         ),
       ),
     ));

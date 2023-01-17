@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "462285490231",
+    "firebase_url": "https://netfi-408c1-default-rtdb.firebaseio.com",
+    "project_id": "netfi-408c1",
+    "storage_bucket": "netfi-408c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462285490231:android:ccbd751481f5428acc57b2",
+        "android_client_info": {
+          "package_name": "com.example.netflix_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462285490231-hkgmjoar4ml6oga10gvofetv6tk438sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcLH2_CrauAjj9MQjmQGnrxkJTozDCgIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462285490231-hkgmjoar4ml6oga10gvofetv6tk438sj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
