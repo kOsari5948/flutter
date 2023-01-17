@@ -1,8 +1,14 @@
+import 'dart:async';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:netflix_2/main.dart';
+import 'package:disk_space/disk_space.dart';
+
+SaveStorage ss = new SaveStorage();
 
 class save_setting extends StatefulWidget {
   @override
@@ -10,6 +16,36 @@ class save_setting extends StatefulWidget {
 }
 
 class _save_setting extends State<save_setting> {
+  //변수 setState쓰면 화면 갱신 자동
+
+  late Future<double?> future;
+
+  @override
+  void initState() {
+    super.initState();
+    future = DiskSpace.getFreeDiskSpace;
+  }
+
+  void linesizeadd() {
+    setState(() {
+      ss.linesizeadd();
+    });
+  }
+
+  void linesizeremove() {
+    setState(() {
+      ss.linesizeremove();
+    });
+  }
+
+  double linesizeget() {
+    double lg = ss.linesizeget();
+    setState(() {
+      lg = ss.linesizeget();
+    });
+    return lg;
+  }
+
   @override
   Widget build(BuildContext context) {
     //위젯 시작
@@ -90,13 +126,13 @@ class _save_setting extends State<save_setting> {
                         color: Color.fromARGB(255, 155, 155, 155),
                         size: 45,
                       ),
-                      tooltip: 'profile',
-                      onPressed: () => {Navigator.pop(context)},
+                      tooltip: 'remove',
+                      onPressed: () => {linesizeremove()},
                     ),
                   ),
                   Container(
                     child: Text(
-                      "1.0",
+                      ss.linesizeget().toString(),
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
@@ -111,8 +147,8 @@ class _save_setting extends State<save_setting> {
                         color: Color.fromARGB(255, 155, 155, 155),
                         size: 45,
                       ),
-                      tooltip: 'profile',
-                      onPressed: () => {Navigator.pop(context)},
+                      tooltip: 'add',
+                      onPressed: () => {linesizeadd()},
                     ),
                   )
                 ],
@@ -135,7 +171,10 @@ class _save_setting extends State<save_setting> {
                 width: 360,
                 padding: EdgeInsets.only(top: 15, bottom: 15),
                 child: Text(
-                  "1GB는 일반 화질 기준으로 콘텐츠 약 4시간 분량에 해당합니다. 이 기능은 Wi-Fi에서만 작동합니다.",
+                  linesizeget().toString() +
+                      "GB는 일반 화질 기준으로 콘텐츠 약" +
+                      (ss.linesizeget() * 4).toString() +
+                      "시간 분량에 해당합니다. 이 기능은 Wi-Fi에서만 작동합니다.",
                   style: TextStyle(fontSize: 13),
                   textAlign: TextAlign.center,
                 ),
@@ -151,6 +190,26 @@ class _save_setting extends State<save_setting> {
                       textStyle: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ),
+              FutureBuilder<double?>(
+                future: future,
+                builder: ((context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text('오류');
+                  } else {
+                    return Container(
+                      width: 360,
+                      height: 20,
+                      padding: EdgeInsets.only(top: 10, bottom: 5),
+                      child: LinearProgressIndicator(
+                        backgroundColor: Color.fromARGB(255, 216, 216, 216),
+                        value: (ss.linesizeget() / (snapshot.data! / 1000)),
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Color.fromARGB(255, 92, 142, 215)),
+                      ),
+                    );
+                  }
+                }),
+              ),
 
               //프로그래습바 너어라
 
@@ -165,24 +224,21 @@ class _save_setting extends State<save_setting> {
                         Container(
                           width: 10,
                           height: 10,
-                          color: Colors.blue,
-
+                          color: Color.fromARGB(255, 92, 142, 215),
                         ),
                         Text('   나만의 자동 저장')
-                        ],
+                      ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                      //코드부분           
-                      
+                    Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                      //코드부분
+
                       Container(
-                          width: 10,
-                          height: 10,
-                          color: Colors.white,
-                        ),          
+                        width: 10,
+                        height: 10,
+                        color: Color.fromARGB(255, 216, 216, 216),
+                      ),
                       Text('   여유 공간')
-                    ])
+                    ]),
                   ],
                 ),
               )

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_2/screen/home.dart';
 import 'package:netflix_2/screen/save.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
+
+double linesize = 1;
 
 void main() {
   runApp(MyApp());
@@ -72,11 +75,7 @@ class _MyAppState extends State<MyApp> {
             physics: const NeverScrollableScrollPhysics(), //스크롤 막기
             children: <Widget>[
               //위젯 여러개 설정 화면 여러개 설정
-              Container(
-                child: const Center(
-                  child: Text('save'),
-                ),
-              ),
+              home(),
               Container(
                 child: const Center(
                   child: Text('text'),
@@ -89,5 +88,19 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+}
+
+class SaveStorage {
+  void linesizeadd() {
+    linesize = linesize + 0.5;
+  }
+
+  void linesizeremove() {
+    linesize = linesize - 0.5;
+  }
+
+  double linesizeget() {
+    return linesize;
   }
 }
