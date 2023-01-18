@@ -36,7 +36,7 @@ class Movie {
   } //json으로 만들어서 던지기
 }
 
-Future<List<Movie>> getFireModels() async {
+Future<List<Movie>> getMovie() async {
   //접속한 firebase 모델명
   CollectionReference<Map<String, dynamic>> collectionReference =
       FirebaseFirestore.instance.collection("Movie");

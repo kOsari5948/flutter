@@ -1,6 +1,8 @@
 import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_2/model/content.dart';
 import 'package:netflix_2/model/movie.dart';
 import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
@@ -12,7 +14,9 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  Future<List<Movie>> movies = getFireModels();
+  Future<List<Movie>> movies = getMovie();
+  Future<List<Content>> content = getContent();
+
   @override
   void initState() {
     super.initState();
@@ -22,157 +26,186 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     //위젯 시작
     return MaterialApp(
-      //머테리얼(안드로이드 스타일)로 만들꺼야
-      title: 'Bbongflix',
-      debugShowCheckedModeBanner: false, //디버그 포장 없에기
+        //머테리얼(안드로이드 스타일)로 만들꺼야
+        title: 'Bbongflix',
 
-      theme: ThemeData(
-        //테마 설정
-        scaffoldBackgroundColor: Colors.black,
-        backgroundColor: Colors.black,
-        brightness: Brightness.dark, //전체 색상
-        primaryColor: Colors.black, //타이틀 색상
-      ),
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            leading: IconButton(
-              onPressed: () {},
-              icon: Image.asset('src/image/logo.png'),
-            ),
-            actions: <Widget>[
-              new IconButton(
-                icon: new Icon(Icons.cast),
-                tooltip: 'cast',
-                onPressed: () => {},
+        debugShowCheckedModeBanner: false, //디버그 포장 없에기
+
+        theme: ThemeData(
+          //테마 설정
+          
+          scaffoldBackgroundColor: Colors.black,
+          backgroundColor: Colors.black,
+          brightness: Brightness.dark, //전체 색상
+          primaryColor: Colors.black, //타이틀 색상
+        ),
+        home: Scaffold(
+          //backgroundColor: Colors.red,
+            appBar: AppBar(
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+              leading: IconButton(
+                onPressed: () {},
+                icon: Image.asset('src/image/logo.png'),
               ),
-              new IconButton(
-                icon: new Icon(Icons.search),
-                tooltip: 'search',
-                onPressed: () => {},
-              ),
-              new IconButton(
-                icon: new Icon(Icons.usb_rounded),
-                tooltip: 'profile',
-                onPressed: () => {},
-              ),
-            ],
-            toolbarHeight: 70,
-            flexibleSpace: new Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      colors: [
-                    Color.fromARGB(255, 0, 0, 0),
-                    Color.fromARGB(20, 0, 0, 0),
-                  ],
-                      stops: [
-                    0,
-                    1
-                  ])),
-            ),
-          ),
-          //화면 그리기
-          body: FutureBuilder(
-            future: movies,
-            builder: (context, snapshot) {
-              if(!snapshot.hasData){
-                return CircularProgressIndicator();
-              }
-              else{
-                 return ListView(
-                children: <Widget>[
-                  Stack(
-                    //겹치는 거래요
-                    //순서 중요
-                    children: <Widget>[
-                      Image.asset(
-                        'src/image/solo2.png',
-                        fit: BoxFit.fitWidth,
-                        height: 400,
-                        width: 500,
-                      ),
-                      TopBar(),
+              actions: <Widget>[
+                new IconButton(
+                  icon: new Icon(Icons.cast),
+                  tooltip: 'cast',
+                  onPressed: () => {},
+                ),
+                new IconButton(
+                  icon: new Icon(Icons.search),
+                  tooltip: 'search',
+                  onPressed: () => {},
+                ),
+                new IconButton(
+                  icon: new Icon(Icons.usb_rounded),
+                  tooltip: 'profile',
+                  onPressed: () => {},
+                ),
+              ],
+              toolbarHeight: 70,
+              flexibleSpace: new Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: FractionalOffset.topCenter,
+                        end: FractionalOffset.bottomCenter,
+                        colors: [
+                      Color.fromARGB(255, 0, 0, 0),
+                      Color.fromARGB(20, 0, 0, 0),
                     ],
-                  ),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Container(
-                          child: Column(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.add),
-                                onPressed: () {},
-                              ),
-                              Text(
-                                '내가 찜한 콘텐츠',
-                                style: TextStyle(fontSize: 11),
-                              ),
-                            ],
+                        stops: [
+                      0,
+                      1
+                    ])),
+              ),
+            ),
+            //화면 그리기
+            body: NestedScrollView(
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    SliverOverlapAbsorber(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                    sliver:SliverAppBar( 
+                      //pinned: true,                
+                      snap: false,
+                      floating: false,
+                      expandedHeight: 10,
+                      backgroundColor: Colors.transparent,
+                      elevation: 0.0,
+                      //title: TopBar(),
+                      flexibleSpace: FlexibleSpaceBar(
+                        background: TopBar(),
+                      ),
+                      
+                    ) ,
+                   )
+                    
+                  ];
+                },
+                body: FutureBuilder(
+                  future: movies,
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return CircularProgressIndicator();
+                    } else {
+                      return ListView(
+                        children: <Widget>[
+                          Image.asset(
+                            'src/image/solo2.png',
+                            fit: BoxFit.fitWidth,
+                            height: 400,
+                            width: 500,
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(right: 10),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.white, // Background Color
-                            ),
-                            onPressed: () {},
+                          Container(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
-                                Icon(
-                                  Icons.play_arrow,
-                                  color: Colors.black,
+                                Container(
+                                  child: Column(
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon: Icon(Icons.add),
+                                        onPressed: () {},
+                                      ),
+                                      Text(
+                                        '내가 찜한 콘텐츠',
+                                        style: TextStyle(fontSize: 11),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.all(3),
+                                Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                      backgroundColor:
+                                          Colors.white, // Background Color
+                                    ),
+                                    onPressed: () {},
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.play_arrow,
+                                          color: Colors.black,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(3),
+                                        ),
+                                        Text(
+                                          '재생',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                                Text(
-                                  '재생',
-                                  style: TextStyle(color: Colors.black),
-                                ),
+                                Container(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: Column(children: <Widget>[
+                                    IconButton(
+                                      icon: Icon(Icons.info),
+                                      onPressed: () {
+                                        //   Navigator.of(context).push(MaterialPageRoute<Null>(
+                                        //       fullscreenDialog: true,
+                                        //       builder: (BuildContext context) {
+                                        //         return DetailScreen(
+                                        //           movie: movies[_currentPage],
+                                        //         );
+                                        //       }));
+                                      },
+                                    ),
+                                    Text(
+                                      '정보',
+                                      style: TextStyle(fontSize: 11),
+                                    )
+                                  ]),
+                                )
                               ],
                             ),
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(right: 10),
-                          child: Column(children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.info),
-                              onPressed: () {
-                                //   Navigator.of(context).push(MaterialPageRoute<Null>(
-                                //       fullscreenDialog: true,
-                                //       builder: (BuildContext context) {
-                                //         return DetailScreen(
-                                //           movie: movies[_currentPage],
-                                //         );
-                                //       }));
-                              },
-                            ),
-                            Text(
-                              '정보',
-                              style: TextStyle(fontSize: 11),
-                            )
-                          ]),
-                        )
-                      ],
-                    ),
-                  ),
 
-                  //위젯들 추가 한곳
-                  BoxSlider(movies: snapshot.data!.toList()),
-                  //icon 버튼은 사진만 들어감 text에다가 icon달아야함
-                ],
-              );
-            
-              }
-             },
-          )),
-    );
+                          //위젯들 추가 한곳
+                          BoxSlider(
+                            movies: snapshot.data!.toList(),
+                            title: '넷플릭스 인기 콘텐츠',
+                          ),
+                          BoxSlider(
+                              movies: snapshot.data!.toList(),
+                              title: '찬님의 컨텐츠'),
+                          BoxSlider(
+                              movies: snapshot.data!.toList(), title: 'TOP 10'),
+                          BoxSlider(
+                              movies: snapshot.data!.toList(), title: '애니'),
+                          BoxSlider(
+                              movies: snapshot.data!.toList(), title: '한국 드라마'),
+                          //icon 버튼은 사진만 들어감 text에다가 icon달아야함
+                        ],
+                      );
+                    }
+                  },
+                ))));
   }
 }
 
@@ -181,6 +214,7 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
       padding: EdgeInsets.fromLTRB(20, 7, 20, 7), //왼쪽 위 오른쪽 아래
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

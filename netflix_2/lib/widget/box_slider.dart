@@ -4,8 +4,9 @@ import 'package:netflix_2/model/movie.dart';
 // 이미지니깐 stateless widget 입니다.
 class BoxSlider extends StatelessWidget {
   final List<Movie> movies; //무비리스트 만들기
+  String? title;
 
-  BoxSlider({required this.movies}); //매개변수
+  BoxSlider({required this.movies, required this.title}); //매개변수
   @override
   Widget build(BuildContext context) {
     //위젯 만들기
@@ -16,7 +17,10 @@ class BoxSlider extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start, //좌측 부터
         children: <Widget>[
           //자식들 넣는다
-          Text('넷플릭스 인기 콘텐츠'),
+          Text(
+            title!,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
           Container(
             //레이아웃 같은거
             height: 180, //높이
@@ -57,7 +61,7 @@ List<Widget> makeBoxImages(BuildContext context, List<Movie> movies) {
         child: Align(
           //위젯 원하는 위치에 박을 수 있데 직접
           alignment: Alignment.centerLeft, //이걸로 직접 박기 중앙에 왼쪽에 박기
-          child:  Image.network(movies[i].img!), //리소스 파일 사용
+          child: Image.network(movies[i].img!), //리소스 파일 사용
         ),
       ),
     ));
