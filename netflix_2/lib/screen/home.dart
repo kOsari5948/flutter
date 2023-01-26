@@ -9,7 +9,7 @@ import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
 import 'package:netflix_2/widget/box_slider.dart';
 
-final ScrollController _scrollController = ScrollController();
+ScrollController _scrollController = ScrollController(initialScrollOffset: 50);
 
 class home extends StatefulWidget {
   @override
@@ -23,16 +23,13 @@ class _homeState extends State<home> {
   @override
   void initState() {
     _scrollController.addListener(() {
-      print('offset = ${_scrollController.offset}');
+      if (_scrollController.offset < 50) {
+        _scrollController.jumpTo(50); //해당 위치로 스크롤 이동
+      }
+
       //스크롤 기능 추가
     });
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
   @override
@@ -105,7 +102,6 @@ class _homeState extends State<home> {
                     controller: _scrollController,
                     slivers: [
                       SliverAppBar(
-                        //pinned: true,
                         snap: true,
                         floating: true,
                         expandedHeight: 10,
