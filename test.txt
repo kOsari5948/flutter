@@ -1,0 +1,92 @@
+SliverFillRemaining(
+                      child: ListView(
+                    children: <Widget>[
+                      Image.asset(
+                        'src/image/solo2.png',
+                        fit: BoxFit.fitWidth,
+                        height: 400,
+                        width: 500,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Container(
+                              child: Column(
+                                children: <Widget>[
+                                  IconButton(
+                                    icon: Icon(Icons.add),
+                                    onPressed: () {},
+                                  ),
+                                  Text(
+                                    '내가 찜한 콘텐츠',
+                                    style: TextStyle(fontSize: 11),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(right: 10),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  backgroundColor:
+                                      Colors.white, // Background Color
+                                ),
+                                onPressed: () {},
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.black,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(3),
+                                    ),
+                                    Text(
+                                      '재생',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(right: 10),
+                              child: Column(children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.info),
+                                  onPressed: () {
+                                    //   Navigator.of(context).push(MaterialPageRoute<Null>(
+                                    //       fullscreenDialog: true,
+                                    //       builder: (BuildContext context) {
+                                    //         return DetailScreen(
+                                    //           movie: movies[_currentPage],
+                                    //         );
+                                    //       }));
+                                  },
+                                ),
+                                Text(
+                                  '정보',
+                                  style: TextStyle(fontSize: 11),
+                                )
+                              ]),
+                            )
+                          ],
+                        ),
+                      ),
+
+                      //위젯들 추가 한곳
+                      BoxSlider(
+                        movies: snapshot.data!.toList(),
+                        title: '넷플릭스 인기 콘텐츠',
+                      ),
+                      BoxSlider(
+                          movies: snapshot.data!.toList(), title: '찬님의 컨텐츠'),
+                      BoxSlider(
+                          movies: snapshot.data!.toList(), title: 'TOP 10'),
+                      BoxSlider(movies: snapshot.data!.toList(), title: '애니'),
+                      BoxSlider(
+                          movies: snapshot.data!.toList(), title: '한국 드라마'),
+                      //icon 버튼은 사진만 들어감 text에다가 icon달아야함
+                    ],
+                  ))
