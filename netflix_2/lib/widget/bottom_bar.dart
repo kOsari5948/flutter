@@ -34,7 +34,7 @@ class Bottom extends StatelessWidget {
                 size: 30,
               ),
               child: Text(
-                '검색',
+                'New&Hot',
                 style: TextStyle(fontSize: 9, height: -0.2),
               ),
             ),

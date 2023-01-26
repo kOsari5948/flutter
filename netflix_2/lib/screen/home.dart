@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_2/model/content.dart';
 import 'package:netflix_2/model/movie.dart';
 import 'package:netflix_2/screen/save_setting.dart';
+import 'package:netflix_2/screen/search_screen.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
 import 'package:netflix_2/widget/box_slider.dart';
 
@@ -66,7 +67,13 @@ class _homeState extends State<home> {
               new IconButton(
                 icon: new Icon(Icons.search),
                 tooltip: 'search',
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(MaterialPageRoute<Null>(
+                      fullscreenDialog: true,
+                      builder: (BuildContext context) {
+                        return SearchScreen();
+                      }))
+                },
               ),
               new IconButton(
                 icon: new Icon(Icons.usb_rounded),
