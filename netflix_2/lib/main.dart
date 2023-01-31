@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_2/screen/home.dart';
+import 'package:netflix_2/screen/new.dart';
 import 'package:netflix_2/screen/save.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
 
 double linesize = 1;
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized(); //풀루터 초기화 (firebase)
 
   await Firebase.initializeApp(
@@ -83,17 +83,13 @@ class _MyAppState extends State<MyApp> {
             ),
           ),*/
           //화면 그리기
-          body: TabBarView(
+          body: new TabBarView(
             //탭 뷰 하나 하나가 이거임
             physics: const NeverScrollableScrollPhysics(), //스크롤 막기
             children: <Widget>[
               //위젯 여러개 설정 화면 여러개 설정
               home(),
-              Container(
-                child: const Center(
-                  child: Text('text'),
-                ),
-              ),
+              New(),
               save()
             ],
           ),
