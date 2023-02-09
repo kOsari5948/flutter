@@ -6,7 +6,6 @@ import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/screen/search_screen.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-import 'package:sticky_infinite_list/sticky_infinite_list.dart';
 
 ScrollController _scrollController = ScrollController(initialScrollOffset: 0);
 
@@ -221,11 +220,98 @@ class _new extends State<New> {
                   ]),
                 )),
           ),
-
+          //
+          //
+          //
+          //
+          //
+          //
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
+          ///
           //화면 그리기
           body: ListView(children: <Widget>[
-            StickyHeader(
-                controller: _scrollController,
+            StickyHeaderBuilder(
+              builder: (BuildContext context, double stuckAmount) {
+                return Container(
+                  height: 50.0,
+                  color: Color.lerp(
+                      Colors.blue[700], Colors.red[700], stuckAmount),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                      child: Text("sadasdasdd")),
+                );
+              },
+              content: Container(
+                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                  child: Image.asset("src/image/solo2.png")),
+            ),
+            StickyHeaderBuilder(
+              builder: (BuildContext context, double stuckAmount) {
+                return Container(
+                  height: 50.0,
+                  color: Color.lerp(
+                      Colors.blue[700], Colors.red[700], stuckAmount),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                      child: Text("sadasdasdd")),
+                );
+              },
+              content: Container(
+                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                  child: Image.asset("src/image/solo2.png")),
+            ),
+            StickyHeaderBuilder(
+              builder: (BuildContext context, double stuckAmount) {
+                return Container(
+                  height: 50.0,
+                  color: Color.lerp(
+                      Colors.blue[700], Colors.red[700], stuckAmount),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                      child: Text("sadasdasdd")),
+                );
+              },
+              content: Container(
+                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                  child: Image.asset("src/image/solo2.png")),
+            ),
+            StickyHeaderBuilder(
+              builder: (BuildContext context, double stuckAmount) {
+                return Container(
+                  height: 50.0,
+                  color: Color.lerp(
+                      Colors.blue[700], Colors.red[700], stuckAmount),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                      child: Text("sadasdasdd")),
+                );
+              },
+              content: Container(
+                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
+                  child: Image.asset("src/image/solo2.png")),
+            ),
+
+            /*StickyHeader(
                 overlapHeaders: true,
                 header: Container(
                   height: 58.0,
@@ -610,6 +696,7 @@ class _new extends State<New> {
                     ],
                   ),
                 )),
+          */
           ])),
     );
   }

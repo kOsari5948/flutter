@@ -29,6 +29,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  sticky_infinite_list: ^4.0.1
+  sticky_headers: "^0.3.0"
   disk_space:
   getwidget:
   flutter:
