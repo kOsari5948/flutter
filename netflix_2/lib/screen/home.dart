@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_2/model/content.dart';
 import 'package:netflix_2/model/movie.dart';
+import 'package:netflix_2/screen/pro.dart';
 import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/screen/search_screen.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
@@ -78,7 +79,13 @@ class _homeState extends State<home> {
               new IconButton(
                 icon: new Icon(Icons.usb_rounded),
                 tooltip: 'profile',
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(MaterialPageRoute<Null>(
+                      fullscreenDialog: false,
+                      builder: (BuildContext context) {
+                        return pro();
+                      }))
+                },
               ),
             ],
             toolbarHeight: 70,

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix_2/screen/pro.dart';
 import 'package:netflix_2/screen/save_setting.dart';
 import 'package:netflix_2/screen/search_screen.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
@@ -72,7 +73,13 @@ class _new extends State<New> {
               new IconButton(
                 icon: new Icon(Icons.usb_rounded),
                 tooltip: 'profile',
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.of(context).push(MaterialPageRoute<Null>(
+                      fullscreenDialog: true,
+                      builder: (BuildContext context) {
+                        return pro();
+                      }))
+                },
               ),
             ],
             toolbarHeight: 70,
