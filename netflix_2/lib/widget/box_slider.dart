@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_2/model/movie.dart';
+import 'package:netflix_2/screen/detail_screen.dart';
 
 // 이미지니깐 stateless widget 입니다.
 class BoxSlider extends StatelessWidget {
@@ -47,12 +48,11 @@ List<Widget> makeBoxImages(BuildContext context, List<Movie> movies) {
             //화면 전환 위젯 Navigator push 이동 pop 돌아오기of 없어도 됨
             fullscreenDialog: true, //전체 화면
             builder: (BuildContext context) {
-              return Container();
               //내부 화면 만들기
-              /*return DetailScreen(
+              return DetailScreen(
                 //무비에 대한 movies 값만 받아서 이동
                 movie: movies[i],
-              );*/
+              );
             }));
       }, //이벤트
       child: Container(
