@@ -174,19 +174,15 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ), // moive에 대한 정보 나열
                                 Container(
                                   padding: EdgeInsets.all(5),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Text(
-                                          '그동안 약한 기술을 보여주고 싶었던 백호는 마침 방문한 상양고\n선수들에게 연습 시합을 제안한다. 하지만 갑자기 변덕규가 등장하는\n바람에 백호는 벤치 신세가 된다.',
-                                          textAlign: TextAlign.left),
-                                    ],
-                                  ),
+                                  child: Text(
+                                      '그동안 약한 기술을 보여주고 싶었던 백호는 마침 방문한 상양고 선수들에게 연습 시합을 제안한다. 하지만 갑자기 변덕규가 등장하는 바람에 백호는 벤치 신세가 된다.',
+                                      textAlign: TextAlign.left),
                                 ), // moive에 대한 정보 나열
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    '출연: 쿠시오 타케시, 히라미츠 아키코, 아나다 키요유키, 야정찬, 야민철',
+                                    '출연: 쿠시오 타케시, 야성민, 개지훈, 야정찬, 야민철',
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       color: Colors.white60,

@@ -11,6 +11,11 @@ import 'package:sticky_infinite_list/sticky_infinite_list.dart';
 
 ScrollController _scrollController = ScrollController(initialScrollOffset: 0);
 
+final GlobalKey gk1 = GlobalKey();
+final GlobalKey gk2 = GlobalKey();
+final GlobalKey gk3 = GlobalKey();
+final GlobalKey gk4 = GlobalKey();
+
 class New extends StatefulWidget {
   @override
   State<New> createState() => _new(); //상태 줘서 내부 만들기
@@ -103,6 +108,10 @@ class _new extends State<New> {
                         icon: Image.asset("src/image/popcorn.png"),
                         onPressed: () {
                           setState(() {
+                            Scrollable.ensureVisible(
+                              gk1.currentContext!,
+                              duration: Duration(seconds: 1),
+                            );
                             if (flag != 1) {
                               color1 = Colors.white;
                               color1_text = Colors.black;
@@ -137,6 +146,10 @@ class _new extends State<New> {
                         icon: Image.asset("src/image/fire.png"),
                         onPressed: () {
                           setState(() {
+                            Scrollable.ensureVisible(
+                              gk2.currentContext!,
+                              duration: Duration(seconds: 1),
+                            );
                             if (flag != 2) {
                               color1 = Colors.black;
                               color1_text = Colors.white;
@@ -171,6 +184,10 @@ class _new extends State<New> {
                         icon: Image.asset("src/image/top-10.png"),
                         onPressed: () {
                           setState(() {
+                            Scrollable.ensureVisible(
+                              gk3.currentContext!,
+                              duration: Duration(seconds: 1),
+                            );
                             if (flag != 3) {
                               color1 = Colors.black;
                               color1_text = Colors.white;
@@ -205,6 +222,10 @@ class _new extends State<New> {
                         icon: Image.asset("src/image/top-10.png"),
                         onPressed: () {
                           setState(() {
+                            Scrollable.ensureVisible(
+                              gk4.currentContext!,
+                              duration: Duration(seconds: 1),
+                            );
                             if (flag != 4) {
                               color1 = Colors.black;
                               color1_text = Colors.white;
@@ -230,2245 +251,2276 @@ class _new extends State<New> {
           ),
 
           //화면 그리기
-          body: ListView(children: <Widget>[
-            //공개 예정
-            Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
-                width: 400,
-                child: Row(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "src/image/popcorn.png",
-                          height: 20,
-                          width: 20,
-                        )
-                      ],
-                    ),
-                    Row(
+          body: SingleChildScrollView(
+            child: Column(children: <Widget>[
+              //공개 예정
+              Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                  width: 400,
+                  key: gk1,
+                  child: Row(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "src/image/popcorn.png",
+                            height: 20,
+                            width: 20,
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "  공개 예정",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
                       children: <Widget>[
                         Text(
-                          "  공개 예정",
+                          "1월",
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        ),
+                        Text(
+                          "20",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
-                  ],
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 70,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1월",
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      ),
-                      Text(
-                        "20",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ],
                   ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 300,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 300,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "1월",
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        ),
+                        Text(
+                          "20",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "1월",
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        ),
+                        Text(
+                          "20",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "1월",
+                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        ),
+                        Text(
+                          "20",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              //모두의 인기 콘텐츠
+              Container(
+                key: gk2,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 50, 0, 15),
+                        width: 400,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
+                                Image.asset(
+                                  "src/image/fire.png",
+                                  height: 20,
+                                  width: 20,
+                                )
                               ],
                             ),
                             Row(
                               children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
+                                Text(
+                                  "모두의 인기 콘텐츠",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                )
                               ],
                             ),
                           ],
-                        ),
-                      ),
-                      SizedBox(width: 300, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 300,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 70,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1월",
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      ),
-                      Text(
-                        "20",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 300,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 300, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 300,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 70,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1월",
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      ),
-                      Text(
-                        "20",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 300,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 300, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 300,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 70,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1월",
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      ),
-                      Text(
-                        "20",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 300,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 300, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 300,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 300,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            //모두의 인기 콘텐츠
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 50, 0, 15),
+                        )),
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset("src/image/solo2.png",
+                            height: 150,
+                            width: 400,
+                            fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
+                    ,
+                    SizedBox(
                       width: 400,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Image.asset(
-                                "src/image/fire.png",
-                                height: 20,
-                                width: 20,
-                              )
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
                             ],
                           ),
                           Row(
                             children: <Widget>[
-                              Text(
-                                "모두의 인기 콘텐츠",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              )
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
                             ],
                           ),
                         ],
-                      )),
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("src/image/solo2.png",
-                          height: 150,
-                          width: 400,
-                          fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
-                  ,
-                  SizedBox(
-                    width: 400,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "자백",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                        style: TextStyle(color: Colors.grey),
-                      )),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      width: 400,
-                      child: Text(
-                        "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
-                ],
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "자백",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        width: 400,
+                        child: Text(
+                          "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("src/image/solo2.png",
-                          height: 150,
-                          width: 400,
-                          fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
-                  ,
-                  SizedBox(
-                    width: 400,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "자백",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                        style: TextStyle(color: Colors.grey),
-                      )),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      width: 400,
-                      child: Text(
-                        "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("src/image/solo2.png",
-                          height: 150,
-                          width: 400,
-                          fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
-                  ,
-                  SizedBox(
-                    width: 400,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "자백",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                        style: TextStyle(color: Colors.grey),
-                      )),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      width: 400,
-                      child: Text(
-                        "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("src/image/solo2.png",
-                          height: 150,
-                          width: 400,
-                          fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
-                  ,
-                  SizedBox(
-                    width: 400,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "자백",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                        style: TextStyle(color: Colors.grey),
-                      )),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      width: 400,
-                      child: Text(
-                        "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset("src/image/solo2.png",
-                          height: 150,
-                          width: 400,
-                          fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
-                  ,
-                  SizedBox(
-                    width: 400,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                            Image.asset("src/image/fire.png",
-                                height: 40, width: 40),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "자백",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: 400,
-                      child: Text(
-                        "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                        style: TextStyle(color: Colors.grey),
-                      )),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      width: 400,
-                      child: Text(
-                        "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
-                ],
-              ),
-            ),
-            //TOP 10 시리즈
-            Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
-                width: 400,
-                child: Row(
+              Container(
+                child: Column(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Image.asset(
-                          "src/image/top-10.png",
-                          height: 20,
-                          width: 20,
-                        )
-                      ],
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset("src/image/solo2.png",
+                            height: 150,
+                            width: 400,
+                            fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
+                    ,
+                    SizedBox(
+                      width: 400,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    Row(
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "자백",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        width: 400,
+                        child: Text(
+                          "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset("src/image/solo2.png",
+                            height: 150,
+                            width: 400,
+                            fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
+                    ,
+                    SizedBox(
+                      width: 400,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "자백",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        width: 400,
+                        child: Text(
+                          "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset("src/image/solo2.png",
+                            height: 150,
+                            width: 400,
+                            fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
+                    ,
+                    SizedBox(
+                      width: 400,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "자백",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        width: 400,
+                        child: Text(
+                          "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset("src/image/solo2.png",
+                            height: 150,
+                            width: 400,
+                            fit: BoxFit.fitWidth)) //나중에 DB에서 훔쳐 오기)
+                    ,
+                    SizedBox(
+                      width: 400,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                              Image.asset("src/image/fire.png",
+                                  height: 40, width: 40),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "자백",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        )),
+                    SizedBox(
+                        width: 400,
+                        child: Text(
+                          "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                          style: TextStyle(color: Colors.grey),
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        width: 400,
+                        child: Text(
+                          "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        )),
+                  ],
+                ),
+              ),
+              //TOP 10 시리즈
+              Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                  width: 400,
+                  key: gk3,
+                  child: Row(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "src/image/top-10.png",
+                            height: 20,
+                            width: 20,
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "  TOP 10 시리즈",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
                       children: <Widget>[
                         Text(
-                          "  TOP 10 시리즈",
+                          "1",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
-                  ],
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
                   ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "2",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "3",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "4",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "5",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "6",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "7",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "8",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "9",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 9.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "10",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            //TOP 10 영화
-            Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
-                width: 400,
-                child: Row(
-                  children: <Widget>[
-                    Row(
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
                       children: <Widget>[
-                        Image.asset(
-                          "src/image/top-10.png",
-                          height: 20,
-                          width: 20,
-                        )
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
                       ],
                     ),
-                    Row(
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
                       children: <Widget>[
                         Text(
-                          "  TOP 10 영화",
+                          "2",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
-                  ],
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "1",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
                   ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
                           width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "2",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "3",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
+                      ],
+                    ),
                   ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "3",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
                           width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "4",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "4",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
+                      ],
+                    ),
                   ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "5",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
                           width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "6",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "5",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
+                      ],
+                    ),
                   ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "7",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
                           width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "8",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "6",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
+                      ],
+                    ),
                   ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "9",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
                           width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                )),
-            StickyHeader(
-                overlapHeaders: true,
-                header: Container(
-                  height: 58.0,
-                  width: 60,
-                  color: Colors.black,
-                  padding: EdgeInsets.symmetric(horizontal: 9.0),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "10",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Container(
-                  padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset("src/image/solo2.png",
-                          height: 200,
-                          width: 350,
-                          fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
-                      ,
-                      SizedBox(
-                        width: 350,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                            Row(
-                              children: <Widget>[
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                                Image.asset("src/image/fire.png",
-                                    height: 40, width: 40),
-                              ],
-                            ),
-                          ],
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "7",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      SizedBox(width: 350, child: Text("2월 7일 공개")),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "자백",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                          )),
-                      SizedBox(
-                          width: 350,
-                          child: Text(
-                            "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
-                            style: TextStyle(color: Colors.grey),
-                          )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          width: 350,
-                          child: Text(
-                            "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
-                            style: TextStyle(fontSize: 12, color: Colors.white),
-                          )),
-                    ],
+                      ],
+                    ),
                   ),
-                )),
-          ])),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "8",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "9",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 9.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "10",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              //TOP 10 영화
+              Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                  key: gk4,
+                  width: 400,
+                  child: Row(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "src/image/top-10.png",
+                            height: 20,
+                            width: 20,
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "  TOP 10 영화",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "1",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "2",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "3",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "4",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "5",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "6",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "7",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "8",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "9",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+              StickyHeader(
+                  overlapHeaders: true,
+                  header: Container(
+                    height: 58.0,
+                    width: 60,
+                    color: Colors.black,
+                    padding: EdgeInsets.symmetric(horizontal: 9.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "10",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  content: Container(
+                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("src/image/solo2.png",
+                            height: 200,
+                            width: 350,
+                            fit: BoxFit.fitWidth) //나중에 DB에서 훔쳐 오기
+                        ,
+                        SizedBox(
+                          width: 350,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                  Image.asset("src/image/fire.png",
+                                      height: 40, width: 40),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 350, child: Text("2월 7일 공개")),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "자백",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )),
+                        SizedBox(
+                            width: 350,
+                            child: Text(
+                              "스마트폰을 분실한 여자와 그것을 주운 위험한 남자. 남자는 여자의 일거수일투족을 감시하며 그녀의 삶을 흔들어 놓는다.",
+                              style: TextStyle(color: Colors.grey),
+                            )),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            width: 350,
+                            child: Text(
+                              "긴장감 넘치는 • 미스터리 • 심리 게임 • 한국 작품 • 도서 원작 • 범죄",
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
+                      ],
+                    ),
+                  )),
+            ]),
+          )),
     );
   }
 }

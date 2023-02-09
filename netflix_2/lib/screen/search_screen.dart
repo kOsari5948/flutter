@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_2/model/movie.dart';
+import 'package:netflix_2/screen/detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   State<SearchScreen> createState() => _SearchScreenState();
@@ -62,40 +63,39 @@ class _SearchScreenState extends State<SearchScreen> {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        InkWell(
-          child: Row(
-            children: <Widget>[
-              Image.network(
-                movie.img!,
-                width: 160,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Container(
-                width: 100,
-                margin: EdgeInsets.all(5),
-                child: Text(movie.title!, maxLines: 8),
-              )
-            ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          InkWell(
+            child: Row(
+              children: <Widget>[
+                Image.network(
+                  movie.img!,
+                  width: 160,
+                  height: 80,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  width: 100,
+                  margin: EdgeInsets.all(5),
+                  child: Text(movie.title!, maxLines: 8),
+                )
+              ],
+            ),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute<Null>(
+                  fullscreenDialog: true,
+                  builder: (BuildContext context) {
+                    return DetailScreen(movie: movie); //여기에 상세화면을 띄워라 @@@
+                  }));
+            },
           ),
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute<Null>(
-                fullscreenDialog: true,
-                builder: (BuildContext context) {
-                  return Container(); //여기에 상세화면을 띄워라 @@@
-                }));
-          },
-        ),
-        Icon(
-          Icons.play_circle_outline,
-          size: 50,
-        )
-      ],
-    ),
+          Icon(
+            Icons.play_circle_outline,
+            size: 50,
+          )
+        ],
+      ),
     );
-    
   }
 
   @override
