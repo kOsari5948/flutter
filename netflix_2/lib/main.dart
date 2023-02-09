@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_2/screen/home.dart';
 import 'package:netflix_2/screen/new.dart';
+import 'package:netflix_2/screen/pro.dart';
 import 'package:netflix_2/screen/save.dart';
 import 'package:netflix_2/widget/bottom_bar.dart';
 
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: DefaultTabController(
         //탭 컨트롤러
-        length: 3, //4개 짜리 만든다.
+        length: 4, //4개 짜리 만든다.
         child: Scaffold(
           /*appBar: AppBar(
             leading: IconButton(
@@ -90,7 +91,8 @@ class _MyAppState extends State<MyApp> {
               //위젯 여러개 설정 화면 여러개 설정
               home(),
               New(),
-              save()
+              save(),
+              pro()
             ],
           ),
           bottomNavigationBar: Bottom(), //하단바설정 bottom_bar.dart
